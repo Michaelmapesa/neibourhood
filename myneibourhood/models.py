@@ -1,9 +1,12 @@
 import email
 import profile
+from turtle import title
 from unicodedata import name
 from django.db import models
 from django.dispatch import receiver
-from djano.contrib.auth.models import User
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+
 
 # Create your models here.
 class NeighbourHood(models.Model):
@@ -52,12 +55,12 @@ class Profile(models.Model):
     def save_user_profile(sender,instance,):
         instance.profile.save()
 
-class Business(models.Model)
-name=models.CharField(max_length=100)
-email=models.EmailField(max_length=254)
-description=models.TextField(blank=True)
-neighbourhood=models.ForeignKey(NeighbourHood, on_delete=models.CASCADE,related_name="business")
-user=models.ForeignKey(Profile, on_delete=models.CASCADE,related_name='owner')
+class Business(models.Model):
+    name=models.CharField(max_length=100)
+    email=models.EmailField(max_length=254)
+    description=models.TextField(blank=True)
+    neighbourhood=models.ForeignKey(NeighbourHood, on_delete=models.CASCADE,related_name="business")
+    user=models.ForeignKey(Profile, on_delete=models.CASCADE,related_name='owner')
 
 def __str__(self):
     return f'{self.name} Business'
@@ -72,3 +75,9 @@ def delete_business(self):
 def search_business(cls,name):
     return cls.objects.filter(name__icontains=name).all()
 
+class Post(models.Model):
+    title = models.CharField(max_length=120, null=True)
+    post=models.TextField()
+    date = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(profile, on_delete=models.CASCADE, related_name='post_owner')
+    hood = models.ForeignKey(NeighbourHood, on_delete=models.CASCADE,related_name='hood_post')
