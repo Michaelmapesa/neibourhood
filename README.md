@@ -19,7 +19,7 @@ The following languages and technologies have been used on this project:
 
 ##Login
 
-![images](static/images/neiback.jpg)
+![images](neibourhood/myneibourhood/static/images/profile.png)
 
 
 ## Author
