@@ -16,7 +16,7 @@ class NeighbourHood(models.Model):
     police_officer = models.CharField(max_length=60, null=True, blank=True)
 
     def __str__(self):
-        return f'{self.name} hood1'
+        return f'{self.name} hood'
 
     def create_neighborhood(self):
         self.save()
