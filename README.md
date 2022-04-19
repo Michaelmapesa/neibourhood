@@ -19,7 +19,7 @@ The following languages and technologies have been used on this project:
 
 ##Login
 
-![static](images/neibaback.png)
+![images](neibaback.png)
 
 
 ## Author
