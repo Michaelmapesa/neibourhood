@@ -1,6 +1,12 @@
 # NEIBOURHOOD
 
 A web application that allows users to upload information in regard to a hood and also receive information.
+This is the look of homepage
+![homepage](https://user-images.githubusercontent.com/93247734/163986449-876453cd-6019-4e44-8893-7ff8fb419a47.png)
+This is the look of singup page
+![signup](https://user-images.githubusercontent.com/93247734/163986562-08a4c2d2-835b-4058-ad7d-34e8c5f7d7b9.png)
+This is the look of login page
+![login](https://user-images.githubusercontent.com/93247734/163986716-cc10e6f6-4f83-4e29-b0c2-070ec4a08666.png)
 
 ## Technologies Used
 
