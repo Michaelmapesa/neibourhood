@@ -253,7 +253,7 @@ ul.CTAs a {
 }
 .bpic{
     background-image: url("	https://readdork.com/wp-content/uploads/2020/11/The-Neighbourhood-26.jpg");
-    height: 600px;
+    height: auto;
     background-repeat: no-repeat;
     background-size: cover;
 }

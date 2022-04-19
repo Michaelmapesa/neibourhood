@@ -2,6 +2,7 @@ from ast import Param
 import logging
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseRedirect
+from psycopg2 import paramstyle
 
 from myneibourhood.models import NeighbourHood
 from .forms import SignupForm, BusinessForm
@@ -36,7 +37,7 @@ def hoods(request):
     Params = {
         'all_hoods':all_hoods,
     }
-    return render(request, 'all_hoods',params)
+    return render(request, 'all_hoods.html')
 
 def create_hood(request):
     if request.method == 'POST':
