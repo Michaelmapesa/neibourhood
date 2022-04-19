@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'myneibourhood',
     'bootstrap4',
     'django_registration',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
