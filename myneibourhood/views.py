@@ -8,6 +8,7 @@ from .forms import SignupForm, BusinessForm
 from django.contrib.auth import login, authenticate
 from .forms import UpdateProfileForm, NeighbourHoodForm, PostForm
 from .models import NeighbourHood, Profile, Business, Post
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -89,6 +90,14 @@ def create_post(request, hood_id):
     else:
         form = PostForm()
     return render(request, 'post.html', {'form': form})
+
+@login_required(login_url='login')
+def join_hood(request, id):
+    neighbourhood = get_object_or_404(NeighbourHood, id=id)
+    request.user.profile.neighbourhood = neighbourhood
+    request.user.profile.save()
+    return redirect('hood')
+
 
 
 
