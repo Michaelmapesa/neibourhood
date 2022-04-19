@@ -15,7 +15,7 @@ The following languages and technologies have been used on this project:
 
 ## Live Demo
 
-[Live demo] https://awwardxs.herokuapp.com/
+[Live demo] 
 
 ##Login
 
