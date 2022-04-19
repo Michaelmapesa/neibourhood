@@ -19,7 +19,8 @@ The following languages and technologies have been used on this project:
 
 ##Login
 
-![ScreenShot](/images/profile.png)
+![ScreenShot](static/images/profile.png)
+<img src="/static/images/profile.png" alt="Alt text" title="Optional title">
 
 ## Author
 
