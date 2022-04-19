@@ -1,21 +1,17 @@
-from ast import Param
-import logging
-from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseRedirect
-from psycopg2 import paramstyle
-
-from myneibourhood.models import NeighbourHood
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import SignupForm, BusinessForm
 from django.contrib.auth import login, authenticate
-from .forms import UpdateProfileForm, NeighbourHoodForm, PostForm
-from .models import NeighbourHood, Profile, Business, Post
 from django.contrib.auth.decorators import login_required
+from .models import NeighbourHood, Profile, Business, Post
+from .forms import UpdateProfileForm, NeighbourHoodForm, PostForm
 from django.contrib.auth.models import User
 
 
-# Create your views here.
+
 def index(request):
     return render(request, 'index.html')
+
 
 def signup(request):
     if request.method == 'POST':
@@ -27,17 +23,19 @@ def signup(request):
             user = authenticate(username=username, password=password)
             login(request, user)
             return redirect('index')
-        else:
-            form = SignupForm()
-        return render(request,'registration/signup.html',{'form': form})
+    else:
+        form = SignupForm()
+    return render(request, 'registration/signup.html', {'form': form})
+
 
 def hoods(request):
-    all_hoods=NeighbourHood.objects.all()
-    all_hoods=all_hoods[::-1]
-    Params = {
-        'all_hoods':all_hoods,
+    all_hoods = NeighbourHood.objects.all()
+    all_hoods = all_hoods[::-1]
+    params = {
+        'all_hoods': all_hoods,
     }
-    return render(request, 'all_hoods.html')
+    return render(request, 'all_hoods.html', params)
+
 
 def create_hood(request):
     if request.method == 'POST':
@@ -50,6 +48,7 @@ def create_hood(request):
     else:
         form = NeighbourHoodForm()
     return render(request, 'newhood.html', {'form': form})
+
 
 def single_hood(request, hood_id):
     hood = NeighbourHood.objects.get(id=hood_id)
@@ -74,10 +73,12 @@ def single_hood(request, hood_id):
     }
     return render(request, 'single_hood.html', params)
 
+
 def hood_members(request, hood_id):
     hood = NeighbourHood.objects.get(id=hood_id)
     members = Profile.objects.filter(neighbourhood=hood)
     return render(request, 'members.html', {'members': members})
+
 
 def create_post(request, hood_id):
     hood = NeighbourHood.objects.get(id=hood_id)
@@ -99,6 +100,7 @@ def join_hood(request, id):
     request.user.profile.neighbourhood = neighbourhood
     request.user.profile.save()
     return redirect('hood')
+
 
 def leave_hood(request, id):
     hood = get_object_or_404(NeighbourHood, id=id)
@@ -137,11 +139,3 @@ def search_business(request):
     else:
         message = "You haven't searched for any image category"
     return render(request, "results.html")
-
-
-
-
-
-
-    
-
